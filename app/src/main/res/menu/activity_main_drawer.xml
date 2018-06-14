@@ -16,6 +16,20 @@
                     android:icon="@drawable/ic_calender"
                     android:title="20th June, Day 3" />
             </group>
+
         </menu>
     </item>
+
+    <item android:title="Key Stakeholders">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_key"
+                    android:icon="@drawable/ic_people"
+                    android:title="Key Stakeholders" />
+
+            </group>
+        </menu>
+    </item>
+
 </menu>

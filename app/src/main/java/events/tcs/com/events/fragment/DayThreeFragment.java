@@ -21,6 +21,7 @@ import events.tcs.com.events.R;
 import events.tcs.com.events.constant.ApplicationData;
 import events.tcs.com.events.data.Card;
 import events.tcs.com.events.utils.AppUtils;
+import events.tcs.com.events.utils.SharedPreferencesManager;
 
 public class DayThreeFragment extends Fragment {
     private Activity mActivity;
@@ -29,20 +30,41 @@ public class DayThreeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //set values for Card
-        Card obj1 = new Card("Travel to TCS Office", "Travel to TCS Office – Gitanjali Park, complete security procedures", "9:00 AM – 10:00 AM ", "TCS", 0.0, 0.0, true);
-        Card obj2 = new Card("BI Migration Project", "BI Migration Project Workshop with team", "10:00 AM – 11:00 AM ", "David and TCS team", 0.0, 0.0, false);
-        Card obj3 = new Card("SAP AMS Workshop", "SAP AMS Workshop with team", "10:00 AM – 11:00AM", "Stephane and TCS team", ApplicationData.noLat, ApplicationData.noLan, false);
-        Card obj4 = new Card("Presentation", "Presentation on TCS Capabilities in SuccessFactor", "11:00 AM – 12:30 PM ", "TCS SAP COE", ApplicationData.noLat, ApplicationData.noLan, false);
-        Card obj5 = new Card("Lunch @ TCS Office", "Lunch and personal Time/Mails etc", "12:00 PM – 2:00 PM", "N/A", ApplicationData.noLat, ApplicationData.noLan, false);
-        Card obj6 = new Card("Innovation done by the Account Team/Ideathon/Award Ceremony", "In-house Innovation done by the Account Team/Ideathon/Award Ceremony", "02:00 PM – 03:00 PM", "N/A", ApplicationData.noLat, ApplicationData.noLan, false);
-        Card obj7 = new Card("Travel to Airport for Delhi", "Travel to Airport for Delhi", "03:30 PM – 4:30 PM", "N/A", ApplicationData.noLat, ApplicationData.noLan, false);
+
+
         mActivity = getActivity();
-        view = inflater.inflate(R.layout.fragment_day_one, container, false);
+        view = inflater.inflate(R.layout.fragment_day_three, container, false);
         LinearLayout parent = (LinearLayout) view.findViewById(R.id.layout_container);
+        //set values for Card
+        Card obj1 = new Card("Travel to TCS Office", "Travel to TCS Office – Gitanjali Park, complete security procedures", "9:00 AM – 10:00 AM ", " TCS\n", 0.0, 0.0, true);
+        String user = SharedPreferencesManager.readSharedPref(mActivity, ApplicationData.USER_KEY);
+
+        Card obj2 = new Card();
+        switch (user) {
+            case "David":
+                obj2.setHeading("BI Migration Project");
+                obj2.setHeadingDesc("BI Migration Project Workshop with team");
+                obj2.setTimming("10:00 AM – 11:00 AM");
+                obj2.setOwner(" David and TCS team\n");
+                break;
+            case "Stephane":
+                obj2.setHeading("SAP AMS Workshop");
+                obj2.setHeadingDesc("SAP AMS Workshop with team");
+                obj2.setTimming("10:00 AM – 11:00AM");
+                obj2.setOwner(" Stephane and TCS team\n");
+                break;
+        }
+
+
+
+
+        Card obj4 = new Card("Presentation", "Presentation on TCS Capabilities in SuccessFactor", "11:00 AM – 12:30 PM ", " TCS SAP COE\n", ApplicationData.noLat, ApplicationData.noLan, false);
+        Card obj5 = new Card("Lunch @ TCS Office", "Lunch and personal Time/Mails etc", "12:00 PM – 2:00 PM", " N/A\n", ApplicationData.noLat, ApplicationData.noLan, false);
+        Card obj6 = new Card("Innovation done by the Account Team/Ideathon/Award Ceremony", "In-house Innovation done by the Account Team/Ideathon/Award Ceremony", "02:00 PM – 03:00 PM", " N/A\n", ApplicationData.noLat, ApplicationData.noLan, false);
+        Card obj7 = new Card("Travel to Airport for Delhi", "Travel to Airport for Delhi", "03:30 PM – 4:30 PM", " N/A\n", ApplicationData.noLat, ApplicationData.noLan, false);
+
         createCardView(parent, obj1);
         createCardView(parent, obj2);
-        createCardView(parent, obj3);
         createCardView(parent, obj4);
         createCardView(parent, obj5);
         createCardView(parent, obj6);

@@ -76,14 +76,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Owner: TCS"
-                android:textSize="@dimen/app_h4_size" />
+                android:textSize="@dimen/app_h3_size" />
 
             <TextView
                 android:id="@+id/tv_card_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Description: thiss sdjsdgbjsfahbjkfkjkjjagjkahgeirnbierhbiuae regh eriubneiugnerignhreiguer reguneqirgnoieqrn ruigernguietnqrh gnergnyureihynieuheianmphre "
-                android:textSize="@dimen/app_h4_size" />
+                android:textSize="@dimen/app_h3_size" />
 
             <LinearLayout
                 android:layout_width="match_parent"
